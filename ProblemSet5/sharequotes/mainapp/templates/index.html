@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ShareQuotes</title>
+    <link type="text/css" href="{% static 'index.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>Welcome to ShareQuotes</h1>
+    <a href="{% url 'add_entry' %}">Add a quote</a>
+    <ul>
+        {% for entry in entries %}
+        <li>
+            {{ entry.content }}<br>
+            <strong>- {{ entry.person }}</strong><br>
+            <a href="{% url 'entry' entry.id %}">view</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
